@@ -17,3 +17,58 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <p><spring:message code="administrator.action.2" /></p>
+
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+</head>
+<div class="chart" style="width:50%">
+<canvas id="myChart"></canvas>
+</div>
+
+
+<jstl:set var = "allShouts"  value="${statistics.get('count.all.shouts')}" />
+<jstl:set var = "longShouts"  value="${statistics.get('count.long.shouts')}" />
+<jstl:set var = "shortShouts"  value="${statistics.get('count.short.shouts')}" />
+
+<script>
+
+var allShouts = '${allShouts}';
+var longShouts = '${longShouts}';
+var shortShouts = '${shortShouts}';
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+        labels: ["All shouts", "Short shouts", "Long shouts"],
+        datasets: [{
+            label: "Indicators",
+            backgroundColor: 'rgb(0, 153, 204)',
+            borderColor: 'rgb(0, 0, 0)',
+            data: [allShouts, shortShouts, longShouts],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+    	  scales: {
+    	        yAxes: [{
+    	            gridLines: {
+    	                offsetGridLines: true
+    	            },
+    	            ticks: {
+    	            	beginAtZero: true,
+    	            }
+    	        }]
+    	    },
+    }
+});
+
+Chart.scaleService.updateScaleDefaults('bar', {
+    ticks: {
+        min: 0
+    }
+});
+</script>
