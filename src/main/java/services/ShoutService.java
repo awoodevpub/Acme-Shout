@@ -51,7 +51,6 @@ public class ShoutService {
 	}
 
 	public Map<String, Double> computeStatistics() {
-		// TODO Auto-generated method stub
 		Map<String, Double> result;
 		double countAll, countShort, countLong;
 
