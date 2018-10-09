@@ -16,6 +16,8 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<%--prueba --%>
+
 <p><spring:message code="administrator.action.2" /></p>
 
 <head>
