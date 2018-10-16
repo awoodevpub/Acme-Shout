@@ -24,8 +24,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
+					<li><a href="administrator/shouts.do"><spring:message code="master.page.administrator.action.1" /></a></li>
+					<li><a href="administrator/chart.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>
@@ -34,8 +34,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="customer/action-1.do"><spring:message code="master.page.customer.action.1" /></a></li>
-					<li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li>					
+					<li><a href="customer/cite.do"><spring:message code="master.page.customer.action.1" /></a></li>
+					<li><a href="customer/enter_a_shout.do"><spring:message code="master.page.customer.action.2" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>
@@ -52,9 +52,9 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="profile/action-1.do"><spring:message code="master.page.profile.action.1" /></a></li>
-					<li><a href="profile/action-2.do"><spring:message code="master.page.profile.action.2" /></a></li>
-					<li><a href="profile/action-3.do"><spring:message code="master.page.profile.action.3" /></a></li>					
+					<li><a href="profile/inspiring_quotes.do"><spring:message code="master.page.profile.action.1" /></a></li>
+					<li><a href="profile/calculator.do"><spring:message code="master.page.profile.action.2" /></a></li>
+					<li><a href="profile/oops.do"><spring:message code="master.page.profile.action.3" /></a></li>					
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
@@ -63,6 +63,21 @@
 </div>
 
 <div>
-	<a href="?language=en">en</a> | <a href="?language=es">es</a>
+	<a style="text-decoration: underline; color: mediumblue; cursor: pointer;" onClick="javascript:preventRedirect('language=en')">en</a> | <a style="text-decoration: underline; color: mediumblue; cursor: pointer;" onClick="javascript:preventRedirect('language=es')" >es</a>
 </div>
 
+<script type="text/javascript">
+	function preventRedirect(path) {
+		var currentUrl = window.location.href;
+		if (currentUrl.indexOf("language=en") > 0) {
+			currentUrl = currentUrl.replace("language=en", path);
+		} else if (currentUrl.indexOf("language=es") > 0) {
+			currentUrl = currentUrl.replace("language=es", path);
+		} else if (currentUrl.indexOf("?") > 0) {
+			currentUrl += "&" + path;
+		} else {
+			currentUrl += "?" + path;
+		}
+		window.location.replace(currentUrl);
+	}
+</script>
